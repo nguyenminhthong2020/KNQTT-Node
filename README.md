@@ -3,7 +3,7 @@
 This is a Authentication service using Node.js, Express, and TypeScript.
 
 ## Project Structure
-
+```
 project-root/
 ├── dist/                 # Compiled code directory
 ├── node_modules/         # Dependencies directory
@@ -23,7 +23,7 @@ project-root/
 ├── package.json          # npm and dependencies configuration
 ├── package-lock.json     # Lock file for npm dependencies
 └── tsconfig.json         # TypeScript configuration
-
+```
 ## Project Setup Steps
 
 1. Initialize the project:
@@ -46,13 +46,14 @@ npm install prisma --save-dev
 npx prisma init
 
 7. Configure scripts in package.json:
+```
 "scripts": {
     "build": "tsc",
     "start": "node dist/app.js",
     "dev": "nodemon --exec ts-node src/app.ts",
     "watch": "tsc -w"
 }
-
+```
 8. Set up environment configuration in .env file.
 9. Run Prisma migrations and generate Prisma client after adding contents for the schema.prisma file.
 
