@@ -65,3 +65,37 @@ npx prisma generate
 Development mode: npm run dev
 Build: npm run build
 Run production version: npm start
+
+For using the raw query:
+
+1. Add the typedSql preview feature flag to your schema.prisma file:
+```
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["typedSql"]
+}
+```
+
+2. Create a sql directory inside your prisma directory. This is where you'll write your SQL queries.
+
+3. Create a new .sql file in your prisma/sql directory.
+
+mkdir -p prisma/sql
+
+4. Write your SQL queries in your new .sql file
+
+5. Generate Prisma Client with the sql flag to ensure TypeScript functions and types for your SQL queries are created:
+
+prisma generate --sql
+
+6. Now you can import and use your SQL queries in your TypeScript code:
+
+```
+import { PrismaClient } from '@prisma/client'
+import { getUsersWithPosts } from '@prisma/client/sql'
+
+const prisma = new PrismaClient()
+
+const usersWithPostCounts = await prisma.$queryRawTyped(getUsersWithPosts())
+console.log(usersWithPostCounts)
+```
